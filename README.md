@@ -6,7 +6,7 @@ liveStream :
  
  2- "liveStream/css_js_img/js/script.js" script dosyasındaki fonksiyonda "client.init(...)" App ID parametre olarak yazılıdır.
  
- 3- "liveStream/css_js_img/js/script.js" dasyasında kullanıcı rol'ü için "host" veya "audience" olmalıdır. her hangi bir kanal adı parametre olarak gönderilebilir.
+ 3- "liveStream/css_js_img/js/script.js" dasyasında kullanıcı rol'ü için "host" veya "audience" olmalıdır. Her hangi bir kanal adı parametre olarak gönderilebilir.
  
     * host     :  konuşmacı olarak tanımlanabilir. 
     * audience :  ziyaretçi olarak tanımlanabilir. 
