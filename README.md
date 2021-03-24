@@ -11,3 +11,5 @@ liveStream :
     * host     :  konuşmacı olarak tanımlanabilir. 
     * audience :  ziyaretçi olarak tanımlanabilir. 
 4. Bu demo ile birebir video görüşme ve var olan görüşmeye birden çok ziyaretçi katılabilir.
+
+5. https://www.dijitalmenu.co/video/live/ adresinden test edilebilir. 
