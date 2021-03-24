@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "agora-rtc-sdk": "^3.4.0"
+  }
+}
