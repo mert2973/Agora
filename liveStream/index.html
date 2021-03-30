@@ -5,16 +5,36 @@
     <title>Live Streaming</title>
     <link rel="stylesheet" href="css_js_img/css/style.css">
     <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
+
+    <script src="css_js_img/js/jquery-3.4.1.min.js"></script>
+    <!--  <script src="css_js_img/js/bootstrap.bundle.min.js"></script>-->
 </head>
 <body>
     <h1>
         Live Streaming<br> <!-- <small style="font-size: 14pt;">Powered by Agora.io</small> -->
     </h1>
-    <h4>Local video</h4>
-    <div id="me"></div>
+    <h4 id="me-name">Local video</h4>
+    <div id="me">
+  <button id="leave" type="button" class="btn btn-primary btn-sm" >Görüşmeyi Bitir</button>
+    </div>
+
+      <form id="join-form">
+        <div class="button-group">
+        <!--  <button id="join" type="submit" class="btn btn-primary btn-sm">Katıl</button>-->
+
+        <!--  <button id="mute-audio" type="button" class="btn btn-primary btn-sm">Sessi Kapat</button>-->
+        <!--  <button id="mute-video" type="button" class="btn btn-primary btn-sm">Kamerayı kapat</button> -->
+        <!--  <button id="open-video" type="button" class="btn btn-primary btn-sm">Kamerayı Aç</button>-->
+
+        </div>
+     </form>
+
+
+
     <h4>Remote video</h4>
     <div id="remote-container">
     </div>
     <script src="css_js_img/js/script.js"></script>
-</body> 
+
+</body>
 </html>
