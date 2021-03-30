@@ -31,7 +31,8 @@ let client = AgoraRTC.createClient({
     codec: "vp8",
 });
 
-client.init("485793d15e5f41df912ed1ff3aab643c");
+
+client.init("cc01b033d1624664a323afdeec402a87");
 /*******/
 
 //Ask the user to choose a role.
@@ -47,11 +48,20 @@ client.setClientRole(role);
 client.join(null,channel, null, (uid)=>{
   // Create a local stream
 }, handleError);
-let localStream = AgoraRTC.createStream({
-    audio: true,
-    video: true,
-});
+
+var localTracks = {
+   videoTrack: null,
+   audioTrack: null
+ };
+
+ let localStream ;
 if(role!="audience"){
+
+localStream = AgoraRTC.createStream({
+     audio: true,
+     video: true,
+ });
+
     // Initialize the local stream
     localStream.init(()=>{
 
@@ -104,3 +114,66 @@ client.on("peer-leave", function(evt){
     removeVideoStream(streamId);
 });
 /**********/
+
+
+
+async function leave() {
+  for (trackName in localTracks) {
+    var track = localTracks[trackName];
+    if(track) {
+      track.stop();
+      track.close();
+      localTracks[trackName] = undefined;
+    }
+  }
+
+  // remove remote users and player views
+  remoteUsers = {};
+  $("#remote-container").html("");
+
+  // leave the channel
+  await client.leave();
+
+  $("#local-player-name").text("");
+  $("#host-join").attr("disabled", false);
+  $("#audience-join").attr("disabled", false);
+  $("#leave").attr("disabled", true);
+  console.log("client leaves channel success");
+
+}
+
+$("#leave").click(function(){
+  leave(); // close the camera from the peers
+ localStream.close(); //
+ localStream.stop(); //
+
+});
+
+/*
+var localTrackState = {
+  videoTrackEnabled: true,
+  audioTrackEnabled: true
+}
+async function unmuteVideo() {
+  if (!localTracks.videoTrack) return;
+  await localTracks.videoTrack.setEnabled(true);
+  localTrackState.videoTrackEnabled = true;
+  $("#mute-video").text("Mute Video");
+}
+async function muteVideo() {
+  if (!localTracks.videoTrack) return;
+  await localTracks.videoTrack.setEnabled(false);
+  localTrackState.videoTrackEnabled = false;
+  $("#mute-video").text("Unmute Video");
+}
+$("#mute-video").click(function (e) {
+  if (localTrackState.videoTrackEnabled) {
+    muteVideo();
+  } else {
+    unmuteVideo();
+  }
+})
+*/
+
+
+/************------------------*/
